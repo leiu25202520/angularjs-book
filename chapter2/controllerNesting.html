@@ -1,7 +1,7 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="myApp">
   <head>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="//cdn.bootcss.com/angular.js/1.5.0-beta.1/angular.min.js"></script>
     <style type="text/css">
     .selected {
       background-color: lightgreen;
@@ -18,16 +18,16 @@
       </div>
     </div>
     <script>
-    function ParentController($scope) {
-      $scope.firstName = 'Captain';
-      $scope.lastName = 'Nemo';
-      $scope.crewmen = 30;
-    }
-
-    function ChildController($scope) {
-      $scope.lastName = 'Columbus';
-      $scope.crewmen = $scope.crewmen + 56;
-    }
+      var myAppModule = angular.module("myApp",[]);
+      myAppModule.controller('ParentController',function($scope) {
+        $scope.firstName = 'Captain';
+        $scope.lastName = 'Nemo';
+        $scope.crewmen = 30;
+      });
+      myAppModule.controller('ChildController',function($scope) {
+        $scope.lastName = 'Columbus';
+        $scope.crewmen = $scope.crewmen + 56;
+      });
     </script>
   </body>
 </html>

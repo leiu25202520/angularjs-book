@@ -1,7 +1,7 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="myApp">
   <head>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="//cdn.bootcss.com/angular.js/1.5.0-beta.1/angular.min.js"></script>
     <style type="text/css">
       .selected {
         background-color: lightgreen;
@@ -17,7 +17,8 @@
       </tr>
     </table>
     <script>
-      function RestaurantTableController($scope) {
+      var myAppMudule = angular.module('myApp',[]);
+      myAppMudule.controller('RestaurantTableController',function($scope){
         $scope.directory = [{name:'The Handsome Heifer', cuisine:'BBQ'},
           {name:'Green\'s Green Greens', cuisine:'Salads'},
           {name:'House of Fine Fish', cuisine:'Seafood'}];
@@ -25,7 +26,7 @@
         $scope.selectRestaurant = function(row) {
           $scope.selectedRow = row;
         };
-      }
+      });
     </script>
   </body>
 </html>

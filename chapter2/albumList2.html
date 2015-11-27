@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="myApp">
   <head>
     <script src="//cdn.bootcss.com/angular.js/1.5.0-beta.1/angular.min.js"></script>
   </head>
@@ -12,13 +12,14 @@
       </tr>
     </table>
     <script>
+      var myAppModule = angular.module('myApp', []);
       var album = [{name:'Southwest Serenade', duration: '2:34'},
-                   {name:'Northern Light Waltz', duration: '3:21'},
-                   {name:'Eastern Tango', duration: '17:45'}];
-
-      function AlbumController($scope) {
-        $scope.album = album;
-      }
+        {name:'Northern Light Waltz', duration: '3:21'},
+        {name:'Eastern Tango', duration: '17:45'}];
+      myAppModule.controller('AlbumController',
+              function($scope) {
+                $scope.album = album;
+              });
     </script>
   </body>
 </html>

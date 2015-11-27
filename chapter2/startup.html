@@ -1,7 +1,7 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="myApp">
   <head>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="//cdn.bootcss.com/angular.js/1.5.0-beta.1/angular.min.js"></script>
   </head>
   <body>
     <form ng-controller="StartUpController">
@@ -10,13 +10,15 @@
       Recommendation: {{funding.needed}}
     </form>
     <script>
-      function StartUpController($scope) {
+
+      var myAppModule = angular.module('myApp',[]);
+      myAppModule.controller('StartUpController',function($scope){
         $scope.funding = { startingEstimate: 0 };
 
         $scope.computeNeeded = function() {
           $scope.funding.needed = $scope.funding.startingEstimate * 10;
         };
-      }
+      });
     </script>
   </body>
 </html>

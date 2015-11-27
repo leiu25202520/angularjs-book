@@ -1,7 +1,7 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="myApp">
   <head>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="//cdn.bootcss.com/angular.js/1.5.0-beta.1/angular.min.js"></script>
   </head>
   <body>
     <div ng-controller="CountController">
@@ -10,6 +10,7 @@
       <button ng-click='setCount()'>Set count to three</button>
     </div>
     <script>
+
     function CountController($scope) {
       $scope.setCount = function() {
         $scope.count = 3;

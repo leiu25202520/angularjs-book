@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang='en' ng-app>
+<html lang='en' ng-app="myApp">
   <head>
     <title>Validate me!</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="//cdn.bootcss.com/angular.js/1.5.0-beta.1/angular.min.js"></script>
     <style type="text/css">
     .ng-invalid {
       border-color: red;
@@ -25,14 +25,15 @@
                    ng-disabled='!addUserForm.$valid'>Submit</button></div>
     </form>
   <script>
-    function AddUserController($scope) {
+    var myAppModule = angular.module('myApp',[]);
+    myAppModule.controller('AddUserController',function($scope){
       $scope.message = '';
 
       $scope.addUser = function () {
         // TODO for the reader: actually save user to database...
         $scope.message = 'Thanks, ' + $scope.user.first + ', we added you!';
       };
-    }
+    });
   </script>
   </body>
 </html>

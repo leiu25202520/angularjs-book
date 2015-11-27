@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang='en' ng-app>
+<html lang='en' ng-app="myApp">
   <head>
     <title>Shopping Cart</title>
     <link href="bootstrap.css" rel="stylesheet">
@@ -17,9 +17,10 @@
       <div>Discount: {{bill.discount | currency}}</div>
       <div>Subtotal: {{subtotal() | currency}}</div>
     </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+  <script src="//cdn.bootcss.com/angular.js/1.5.0-beta.1/angular.min.js"></script>
   <script>
-    function CartController($scope) {
+    var myAppModule = angular.module('myApp',[]);
+    myAppModule.controller('CartController',function($scope){
       $scope.bill = {};
 
       $scope.items = [
@@ -46,7 +47,7 @@
       }
 
       $scope.$watch($scope.totalCart, calculateDiscount);
-    }
+    });
   </script>
   </body>
 </html>

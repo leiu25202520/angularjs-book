@@ -1,7 +1,7 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="myApp">
   <head>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="//cdn.bootcss.com/angular.js/1.5.0-beta.1/angular.min.js"></script>
   </head>
   <body>
     <table ng-controller='AlbumController'>
@@ -15,30 +15,46 @@
       </tr>
     </table>
     <script>
-      function AlbumController($scope) {
+      var myAppModule = angular.module('myApp',[]);
+
+      myAppModule.controller('AlbumController',function($scope){
+
+        $scope.name = 0;
+        $scope.duration = 0;
+
         $scope.album = [{name:'Southwest Serenade', duration: '5:34'},
-                     {name:'Northern Light Waltz', duration: '3:21'},
-                     {name:'Eastern Tango', duration: '17:45'}];
-        
+          {name:'Northern Light Waltz', duration: '3:21'},
+          {name:'Eastern Tango', duration: '17:45'}];
+
         $scope.sortByName = function () {
           var sorter = function(a, b) {
             var A = a['name'], B = b['name'];
             return ((A < B) ? -1 : (A > B) ? +1 : 0);
           };
-          
+          $scope.name = 1;
           $scope.album = $scope.album.sort(sorter);
         };
-        
+
         $scope.sortByDuration = function () {
-          var sorter = function(a, b) {
-            var A = a['duration'], B = b['duration'];
-            return ((A < B) ? -1 : (A > B) ? 1 : 0);
-          };
+          var sorter = null;
+          if($scope.duration == 0){
+            sorter = function(a, b) {
+              var A = a['duration'], B = b['duration'];
+              return ((A < B) ? -1 : (A > B) ? 1 : 0);
+            };
+            $scope.duration = 1;
+          }else{
+            sorter = function(a, b) {
+              var A = a['duration'], B = b['duration'];
+              return ((A < B) ? 1 : (A > B) ? -1 : 0);
+            };
+            $scope.duration = 0;
+          }
+
 
           $scope.album = $scope.album.sort(sorter);
         };
-        
-      }
+      });
     </script>
   </body>
 </html>

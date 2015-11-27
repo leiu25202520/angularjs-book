@@ -2,7 +2,7 @@
 <html lang='en' ng-app='ShoppingModule'>
   <head>
     <title>Shopping Cart</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="//cdn.bootcss.com/angular.js/1.5.0-beta.1/angular.min.js"></script>
     <link href="bootstrap.css" rel="stylesheet">
   </head>
 
@@ -16,9 +16,6 @@
       </tr>
     </table>
     <script>
-      function ShoppingController($scope, Items) {
-        $scope.items = Items.query();
-      }
 
       var shoppingModule = angular.module('ShoppingModule', []);
 
@@ -35,6 +32,10 @@
           ];
         };
         return items;
+      });
+
+      shoppingModule.controller('ShoppingController',function($scope, Items) {
+        $scope.items = Items.query();
       });
     </script>
   </body>
